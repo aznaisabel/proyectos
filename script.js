@@ -68,6 +68,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // ==========================================
   const localProjectFiles = {
     "gallery-proj-1": [
+      "imagenes/catalogo tipografico.avif",
       "imagenes/catalogo.webp"
     ],
     "gallery-proj-2": [
