@@ -388,7 +388,7 @@
       max-width: 85vw;
     }
   
-    /* REDES SOCIALES FIJAS Y PEGADAS A LA DERECHA (A MEDIA ALTURA) EN MÓVIL */
+    /* REDES SOCIALES FIJAS Y PEGADAS A LA DERECHA EN MÓVIL */
     .social-links {
       position: fixed;
       top: 50%;
@@ -477,14 +477,19 @@
       width: 100%;
       flex-direction: column;
     }
-
+  
     .contact-info {
-      margin-top:30px;
+      margin-top: 30px;
       margin-left: 0;
       text-align: left;
     }
   
-    /* VISTA ARCHIVO ADAPTADA SEGURO A MÓVIL (FLUJO VERTICAL LIMPIO) */
+    /* OCULTAR EL LETRERO "ARRÁSTRANOS" EN MÓVIL */
+    #view-personal .drag-hint {
+      display: none !important;
+    }
+  
+    /* VISTA ARCHIVO ADAPTADA A MÓVIL (FLUJO VERTICAL LIMPIO) */
     #view-personal .personal-canvas {
       margin-left: 0 !important;
       width: 100% !important;
@@ -497,12 +502,6 @@
       padding-top: 20px;
     }
   
-    #view-personal .drag-hint {
-      padding-top: 0;
-      margin-bottom: 10px;
-      align-self: flex-start;
-    }
-  
     #view-personal .draggable-poster {
       position: relative !important;
       top: auto !important;
@@ -511,11 +510,14 @@
       max-width: 320px;
       display: flex;
       justify-content: center;
+      /* PERMITIR SCROLL VERTICAL SOBRE LOS PÓSTERS */
+      touch-action: pan-y !important;
     }
   
     #view-personal .draggable-poster img,
     #view-personal .draggable-poster video {
       width: 100% !important;
       height: auto !important;
+      pointer-events: auto;
     }
   }

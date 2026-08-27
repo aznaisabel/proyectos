@@ -46,11 +46,11 @@ document.addEventListener("DOMContentLoaded", () => {
     // 4. Cambios según la pestaña activa (Retrato, Texto Overlay y Botón Volver)
     if (viewToShow === viewPortfolio) {
       if (portraitImg) portraitImg.src = FOTO_PRINCIPAL;
-      if (textOverlayImg) textOverlayImg.src = FOTO_TEXTO_PRINCIPAL; // texto2.avif en Principal
+      if (textOverlayImg) textOverlayImg.src = FOTO_TEXTO_PRINCIPAL;
       if (btnBack) btnBack.classList.add("hidden");
     } else if (viewToShow === viewInfo) {
       if (portraitImg) portraitImg.src = FOTO_INFO;
-      if (textOverlayImg) textOverlayImg.src = FOTO_TEXTO_INFO; // texto.avif en Info
+      if (textOverlayImg) textOverlayImg.src = FOTO_TEXTO_INFO;
       if (btnBack) btnBack.classList.remove("hidden");
     } else {
       // Vista Archivo / Personal
@@ -78,7 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
       "imagenes/oh la la.avif"
     ],
     "gallery-proj-3": [
-      "imagenes/imagenes/eseda-05.webp",
+      "imagenes/eseda-05.webp",
       "imagenes/eseda-03.avif",
       "imagenes/eseda-02.avif",
       "imagenes/eseda-01.avif",
@@ -96,8 +96,8 @@ document.addEventListener("DOMContentLoaded", () => {
     ],
     "gallery-proj-6": [
       "imagenes/03_MG _Díaz_Isabel.webp",
-      "imagenes/03_MG _Díaz_Isabel 2.webp",
-      "imagenes/03_MG _Díaz_Isabel 3.webp",
+      "imagenes/03_MG _Díaz_Isabel 2.webp",
+      "imagenes/03_MG _Díaz_Isabel 3.webp",
       "imagenes/03_MG _Díaz_Isabel 4.webp"
     ],
     "gallery-proj-7": [
@@ -158,8 +158,12 @@ document.addEventListener("DOMContentLoaded", () => {
     let startX, startY, initialLeft, initialTop;
     let currentScale = 1;
 
+    // Comprueba si estamos en vista escritorio
+    const isDesktop = () => window.innerWidth > 900;
+
     // --- A) ARRASTRE CON RATÓN (PC) ---
     element.addEventListener("mousedown", (e) => {
+      if (!isDesktop()) return;
       isDragging = true;
       hasMoved = false;
       startX = e.clientX;
@@ -172,7 +176,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     document.addEventListener("mousemove", (e) => {
-      if (!isDragging) return;
+      if (!isDragging || !isDesktop()) return;
       
       const dx = e.clientX - startX;
       const dy = e.clientY - startY;
@@ -189,11 +193,11 @@ document.addEventListener("DOMContentLoaded", () => {
       isDragging = false;
     });
 
-    // --- B) TÁCTIL: ARRASTRE Y PELLIZCO (MÓVIL/TABLET) ---
+    // --- B) TÁCTIL: PELLIZCO Y ARRASTRE ---
     let initialPinchDistance = null;
 
     element.addEventListener("touchstart", (e) => {
-      if (e.touches.length === 1) {
+      if (isDesktop() && e.touches.length === 1) {
         isDragging = true;
         hasMoved = false;
         startX = e.touches[0].clientX;
@@ -208,12 +212,12 @@ document.addEventListener("DOMContentLoaded", () => {
           e.touches[0].clientY - e.touches[1].clientY
         );
       }
-    }, { passive: false });
+    }, { passive: true });
 
     element.addEventListener("touchmove", (e) => {
-      if (isDragging && e.touches.length === 1) {
-        e.preventDefault();
+      if (!isDesktop() && e.touches.length === 1) return;
 
+      if (isDragging && e.touches.length === 1) {
         const dx = e.touches[0].clientX - startX;
         const dy = e.touches[0].clientY - startY;
         
@@ -222,8 +226,6 @@ document.addEventListener("DOMContentLoaded", () => {
         element.style.left = `${initialLeft + dx}px`;
         element.style.top = `${initialTop + dy}px`;
       } else if (e.touches.length === 2 && initialPinchDistance) {
-        e.preventDefault();
-
         const currentPinchDistance = Math.hypot(
           e.touches[0].clientX - e.touches[1].clientX,
           e.touches[0].clientY - e.touches[1].clientY
@@ -235,7 +237,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         element.style.transform = `scale(${tempScale})`;
       }
-    }, { passive: false });
+    }, { passive: true });
 
     element.addEventListener("touchend", (e) => {
       if (e.touches.length < 2 && initialPinchDistance) {
@@ -261,7 +263,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // --- D) ACTIVAR FUNCIONALIDADES EN LOGO Y PÓSTERS ---
+  // Activar arrastre en el logo y pósters
   const logo = document.getElementById("draggableLogo");
   if (logo) makeDraggableAndResizable(logo);
 
