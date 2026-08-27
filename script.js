@@ -68,9 +68,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // ==========================================
   const localProjectFiles = {
     "gallery-proj-1": [
-      "imagenes/catalogo.webp",
-      "imagenes/catalogo tipografico.avif",
-      "imagenes/catálogo tipográfico2.avif"
+      "imagenes/catalogo.webp"
     ],
     "gallery-proj-2": [
       "imagenes/Logo oh la la.avif",
@@ -94,12 +92,7 @@ document.addEventListener("DOMContentLoaded", () => {
       "imagenes/esmorzar fest-02.avif",
       "imagenes/esmorzar fest-03.avif"
     ],
-    "gallery-proj-6": [
-      "imagenes/03_MG _Díaz_Isabel.webp",
-      "imagenes/03_MG _Díaz_Isabel 2.webp",
-      "imagenes/03_MG _Díaz_Isabel 3.webp",
-      "imagenes/03_MG _Díaz_Isabel 4.webp"
-    ],
+    
     "gallery-proj-7": [
       "imagenes/hibia-01.avif",
       "imagenes/hibia.webp",
