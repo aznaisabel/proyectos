@@ -1,0 +1,521 @@
+/* =========================================================
+   1. REGLAS GENERALES & RESET
+   ========================================================= */
+   * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Roboto Mono', monospace;
+    background-color: #ffffff;
+    color: #656765;
+    font-size: 11px;
+    line-height: 1.5;
+    overflow-x: hidden;
+  }
+  
+  /* MENÚ SUPERIOR DERECHO FIJO */
+  .top-menu {
+    position: fixed;
+    top: 25px;
+    right: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+    z-index: 1000;
+  }
+  
+  .nav-tab {
+    color: #000000;
+    text-decoration: none;
+    font-size: 10px;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+  }
+  
+  .nav-tab:hover {
+    opacity: 0.6;
+  }
+  
+  .back-link {
+    font-weight: 700;
+  }
+  
+  .hidden {
+    display: none !important;
+  }
+  
+  
+  /* =========================================================
+     2. COLUMNA IZQUIERDA (MONTAJE, RRSS Y POEMA) - DESKTOP
+     ========================================================= */
+  .left-sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 280px;
+    height: 100vh;
+    z-index: 500;
+    pointer-events: none;
+  }
+  
+  .left-sidebar * {
+    pointer-events: auto;
+  }
+  
+  /* MONTAJE FOTO + TEXTOS */
+  .montage-container {
+    position: absolute;
+    top: 200px;
+    left: 0;
+    width: 250px;
+  }
+  
+  .img-portrait {
+    width: 230px;
+    height: auto;
+    display: block;
+  }
+  
+  .img-text-overlay {
+    position: absolute;
+    top: -110px;
+    left: 60px;
+    width: 210px;
+    height: auto;
+    z-index: 5;
+    pointer-events: none;
+  }
+  
+  /* LOGO POSICIONADO EN ESCRITORIO */
+  .draggable-logo {
+    position: absolute;
+    bottom: 0px;
+    left: 42px;
+    top: 300px;
+    z-index: 10;
+    cursor: grab;
+    user-select: none;
+    touch-action: none;
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+  }
+  
+  .draggable-logo:active {
+    cursor: grabbing;
+  }
+  
+  .draggable-logo img {
+    width: 260px;
+    display: block;
+    pointer-events: none;
+    background: transparent !important;
+  }
+  
+  .social-links {
+    position: absolute;
+    top: 580px;
+    left: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+  
+  .social-links a {
+    color: #343333;
+    text-decoration: none;
+    font-size: 10px;
+    letter-spacing: 0.5px;
+  }
+  
+  .social-links a:hover {
+    text-decoration: underline;
+  }
+  
+  .poem-text {
+    position: absolute;
+    bottom: 30px;
+    left: 15px;
+    font-size: 10px;
+    color: #656765;
+    line-height: 1.6;
+  }
+  
+  
+  /* =========================================================
+     3. ESTRUCTURA Y VISTAS GENERALES - DESKTOP
+     ========================================================= */
+  .view-content {
+    display: flex;
+    width: 100%;
+    padding-top: 0px;
+    padding-bottom: 150px;
+  }
+  
+  
+  /* =========================================================
+     4. VISTA PORTFOLIO (PRINCIPAL) - DESKTOP
+     ========================================================= */
+  .center-projects {
+    margin-left: clamp(380px, 42vw, 750px);
+    width: 260px;
+    flex-shrink: 0;
+    padding-top: 200px;
+    display: flex;
+    flex-direction: column;
+    gap: 370px;
+  }
+  
+  .project-item {
+    font-size: 10px;
+    height: 80px;
+  }
+  
+  .project-title {
+    text-transform: uppercase;
+    margin-bottom: 6px;
+    line-height: 1.4;
+  }
+  
+  .project-tags {
+    color: #555555;
+    font-size: 9.5px;
+    padding-left: 20px;
+  }
+  
+  .project-tags strong {
+    color: #000000;
+    font-weight: 700;
+  }
+  
+  .right-viewer {
+    margin-left: clamp(20px, 4vw, 80px);
+    padding-top: 200px;
+    padding-right: 30px;
+    flex-grow: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 75px;
+  }
+  
+  .project-gallery {
+    width: 100%;
+    max-width: 580px;
+  }
+  
+  .slide-frame {
+    background: transparent !important;
+    padding: 0 !important;
+    cursor: pointer;
+    width: 100%;
+    height: 375px;
+    overflow: hidden;
+  }
+  
+  .slide-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    display: block;
+  }
+  
+  
+  /* =========================================================
+     5. VISTA ARCHIVO / PERSONAL WORK - DESKTOP
+     ========================================================= */
+  #view-personal .personal-canvas {
+    margin-left: clamp(380px, 42vw, 750px);
+    position: relative;
+    width: calc(100% - clamp(380px, 42vw, 750px));
+    max-width: 850px;
+    min-height: 200vh;
+  }
+  
+  .drag-hint {
+    font-size: 10px;
+    color: #888888;
+    padding-top: 200px;
+    margin-bottom: 30px;
+    letter-spacing: 1px;
+  }
+  
+  .draggable-poster {
+    position: absolute;
+    cursor: grab;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: none;
+    transition: transform 0.2s ease, filter 0.2s ease;
+  }
+  
+  .draggable-poster img,
+  .draggable-poster video {
+    pointer-events: none;
+  }
+  
+  .draggable-poster:hover {
+    transform: scale(1.02);
+    z-index: 800 !important;
+  }
+  
+  .draggable-poster:active {
+    cursor: grabbing;
+    transform: scale(1.04);
+    z-index: 1000 !important;
+  }
+  
+  .draggable-poster.poster-sm img,
+  .draggable-poster.poster-sm video {
+    width: 170px;
+    height: auto;
+    display: block;
+  }
+  
+  .draggable-poster.poster-md img,
+  .draggable-poster.poster-md video {
+    width: 250px;
+    height: auto;
+    display: block;
+  }
+  
+  .draggable-poster.poster-lg img,
+  .draggable-poster.poster-lg video {
+    width: 320px;
+    height: auto;
+    display: block;
+  }
+  
+  .draggable-poster.poster-xl img,
+  .draggable-poster.poster-xl video {
+    width: 370px;
+    height: auto;
+    display: block;
+  }
+  
+  
+  /* =========================================================
+     6. VISTA INFO - DESKTOP
+     ========================================================= */
+  #view-info .info-body {
+    margin-left: clamp(290px, 35vw, 650px);
+    padding-top: 200px;
+    padding-right: 30px;
+    max-width: 550px;
+  }
+  
+  .info-text {
+    font-size: 11px;
+    line-height: 1.8;
+    text-transform: uppercase;
+    margin-bottom: 25px;
+  }
+  
+  .contact-info {
+    margin-top: 50px;
+    margin-left: 300px;
+    text-align: left;
+  }
+  
+  .contact-info a {
+    color: #000000;
+  }
+  
+  
+  /* =========================================================
+     7. ADAPTACIÓN RESPONSIVA (MÓVIL Y PANTALLA ESTRECHA)
+     ========================================================= */
+  @media (max-width: 900px) {
+  
+    body {
+      display: flex;
+      flex-direction: column;
+    }
+  
+    .top-menu {
+      top: 20px;
+      right: 20px;
+      gap: 8px;
+      z-index: 1000;
+    }
+  
+    /* MOSTRAR BOTÓN ARCHIVO EN MÓVIL EN LUGAR DE OCULTARLO */
+    #btn-personal {
+      display: inline-block !important;
+    }
+  
+    .left-sidebar {
+      display: contents;
+    }
+  
+    /* RETRATO PEGADO AL MARGEN IZQUIERDO */
+    .montage-container {
+      order: 1;
+      position: relative;
+      top: 0;
+      left: 0;
+      width: 100%;
+      max-width: 220px;
+      margin: 160px 0px 60px 0px; 
+    }
+  
+    .img-portrait {
+      width: 100%;
+      max-width: 200px;
+    }
+  
+    .img-text-overlay {
+      top: -90px;
+      left: 40px;
+      width: 180px;
+    }
+  
+    /* LOGO ADAPTADO Y BIEN COLOCADO EN MÓVIL */
+    .draggable-logo {
+      position: absolute;
+      top: 263px;
+      left: 25px;
+      bottom: auto;
+      z-index: 10;
+    }
+  
+    .draggable-logo img {
+      width: 210px;
+      max-width: 85vw;
+    }
+  
+    /* REDES SOCIALES FIJAS Y PEGADAS A LA DERECHA (A MEDIA ALTURA) EN MÓVIL */
+    .social-links {
+      position: fixed;
+      top: 50%;
+      right: 20px;
+      left: auto;
+      transform: translateY(-50%);
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 8px;
+      z-index: 999;
+      text-align: right;
+    }
+  
+    .view-content {
+      order: 3;
+      flex-direction: column;
+      padding: 0 15px 20px 15px;
+      padding-bottom: 20px;
+    }
+  
+    .poem-text {
+      order: 4;
+      position: relative;
+      bottom: 0;
+      left: 0;
+      margin: 40px 0px 60px 0px;
+    }
+  
+    /* VISTA PORTFOLIO EN MÓVIL */
+    #view-portfolio {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+  
+    .center-projects,
+    .right-viewer {
+      display: contents;
+    }
+  
+    .project-item {
+      height: auto;
+      margin-top: 35px;
+      margin-bottom: 12px;
+      width: 100%;
+    }
+  
+    .project-gallery {
+      max-width: 100%;
+      margin-bottom: 25px;
+    }
+  
+    .slide-frame {
+      height: auto;
+      aspect-ratio: 4/3;
+    }
+  
+    .center-projects .project-item:nth-child(1) { order: 1; }
+    #gallery-proj-7 { order: 2; }
+  
+    .center-projects .project-item:nth-child(2) { order: 3; }
+    #gallery-proj-4 { order: 4; }
+  
+    .center-projects .project-item:nth-child(3) { order: 5; }
+    #gallery-proj-3 { order: 6; }
+  
+    .center-projects .project-item:nth-child(4) { order: 7; }
+    #gallery-proj-2 { order: 8; }
+  
+    .center-projects .project-item:nth-child(5) { order: 9; }
+    #gallery-proj-5 { order: 10; }
+  
+    .center-projects .project-item:nth-child(6) { order: 11; }
+    #gallery-proj-1 { order: 12; }
+  
+    .center-projects .project-item:nth-child(7) { order: 13; }
+    #gallery-proj-6 { order: 14; }
+  
+    /* VISTA INFO EN MÓVIL */
+    #view-info .info-body {
+      margin-left: 0 !important;
+      padding-top: 30px !important; 
+      padding-right: 0;
+      width: 100%;
+      flex-direction: column;
+    }
+
+    .contact-info {
+      margin-top:30px;
+      margin-left: 0;
+      text-align: left;
+    }
+  
+    /* VISTA ARCHIVO ADAPTADA SEGURO A MÓVIL (FLUJO VERTICAL LIMPIO) */
+    #view-personal .personal-canvas {
+      margin-left: 0 !important;
+      width: 100% !important;
+      max-width: 100% !important;
+      min-height: auto !important;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 35px;
+      padding-top: 20px;
+    }
+  
+    #view-personal .drag-hint {
+      padding-top: 0;
+      margin-bottom: 10px;
+      align-self: flex-start;
+    }
+  
+    #view-personal .draggable-poster {
+      position: relative !important;
+      top: auto !important;
+      left: auto !important;
+      width: 100% !important;
+      max-width: 320px;
+      display: flex;
+      justify-content: center;
+    }
+  
+    #view-personal .draggable-poster img,
+    #view-personal .draggable-poster video {
+      width: 100% !important;
+      height: auto !important;
+    }
+  }

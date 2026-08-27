@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Isabel Díaz - Portfolio</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,700;1,300&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <nav class="top-menu">
+    <a href="#" id="btn-info" class="nav-tab">INFO</a>
+    <a href="#" id="btn-personal" class="nav-tab">ARCHIVO</a>
+    <a href="#" id="btn-back" class="nav-tab back-link hidden">VOLVER</a>
+  </nav>
+
+  <aside class="left-sidebar">
+    <div class="montage-container">
+      <img class="img-portrait" src="imagenes/retrato2.avif" alt="Retrato">
+    
+      <!-- AHORA TIENE ID Y APUNTA A TEXTO2.PNG DE INICIO -->
+      <img id="text-overlay" class="img-text-overlay" src="imagenes/texto2.avif" alt="Texto overlay">
+    
+      <div class="draggable-logo" id="draggableLogo">
+        <img src="imagenes/belazna.avif" alt="Belazna">
+      </div>
+    </div>
+
+    <div class="social-links">
+      <a href="imagenes/cv-isabel-diaz.pdf" target="_blank" class="cv-link">VER CV</a>
+      <span class="info-tag">EDICIÓN 2026</span>
+    </div>
+
+    <div class="poem-text">
+      <p>me gusta mirar las cosas</p>
+      <p>dos veces</p>
+      <p>creo que ahí</p>
+      <p>empiezan las buenas ideas</p>
+    </div>
+  </aside>
+
+  <!-- VISTA PRINCIPAL (PORTFOLIO) -->
+  <div id="view-portfolio" class="view-content active">
+    
+    <section class="center-projects">
+
+      <div class="project-item">
+        <p class="project-title"><span class="num">.01</span> HIBIA BRAND</p>
+        <p class="project-tags">↪ branding, dirección de arte, redes sociales</p>
+      </div>
+
+      <div class="project-item">
+        <p class="project-title"><span class="num">.02</span> LEGADO DIGITAL · Archivo web</p>
+        <p class="project-tags">↪ dirección de arte, ux/ui, IA</p>
+      </div>
+
+      <div class="project-item">
+        <p class="project-title"><span class="num">.03</span> ESEDA</p>
+        <p class="project-tags">↪ branding, identidad corporativa, web</p>
+      </div>
+
+      <div class="project-item">
+        <p class="project-title"><span class="num">.04</span> OH LÀ LÀ! Clases de Francés</p>
+        <p class="project-tags">↪ identidad visual, dirección de arte, redes sociales</p>
+      </div>
+
+      <div class="project-item">
+        <p class="project-title"><span class="num">.05</span> ESMORZAR FEST</p>
+        <p class="project-tags">↪ dirección de arte, campaña publicitaria, IA</p>
+      </div>
+
+      <div class="project-item">
+        <p class="project-title"><span class="num">.06</span> ESPÉCIMEN TIPOGRÁFICO</p>
+        <p class="project-tags">↪ editorial, dirección de arte</p>
+      </div>
+
+      <div class="project-item">
+        <p class="project-title"><span class="num">.07</span> VÍDEO EXPERIMENTAL</p>
+        <p class="project-tags">↪ dirección de arte, motion graphics</p>
+      </div>
+    </section>
+
+    <section class="right-viewer">
+
+      <div class="project-gallery" id="gallery-proj-7">
+        <div class="slide-frame">
+          <img class="active-image" src="imagenes/hibia-01.avif" alt="Proyecto 1">
+        </div>
+      </div>
+
+      <div class="project-gallery" id="gallery-proj-4">
+        <div class="slide-frame">
+          <img class="active-image" src="imagenes/webarchivo.webp" alt="Proyecto 2">
+        </div>
+      </div>
+
+      <div class="project-gallery" id="gallery-proj-3">
+        <div class="slide-frame">
+          <img class="active-image" src="imagenes/eseda-05.webp" alt="Proyecto 3">
+        </div>
+      </div>
+
+      <div class="project-gallery" id="gallery-proj-2">
+        <div class="slide-frame">
+          <img class="active-image" src="imagenes/Logo oh la la.avif" alt="Proyecto 4">
+        </div>
+      </div>
+
+      <div class="project-gallery" id="gallery-proj-5">
+        <div class="slide-frame">
+          <img class="active-image" src="imagenes/esmorzarfest.webp" alt="Proyecto 5">
+        </div>
+      </div>
+
+      <div class="project-gallery" id="gallery-proj-1">
+        <div class="slide-frame">
+          <img class="active-image" src="catalogo.webp" alt="Proyecto 6">
+        </div>
+      </div>
+
+      <div class="project-gallery" id="gallery-proj-6">
+        <div class="slide-frame">
+          <img class="active-image" src="imagenes/03_MG _Díaz_Isabel.webp" alt="Proyecto 7">
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  
+  <!-- VISTA ARCHIVO -->
+  <div id="view-personal" class="view-content hidden">
+    <div class="personal-canvas">
+      <p class="drag-hint">ARRÁSTRANOS &rarr;</p>
+  
+      <!-- 1. VIVIR  -->
+      <div class="draggable-poster poster-md" style="top: 210px; left: 120px;">
+        <img src="imagenes/vivir.avif" alt="Vivir">
+      </div>
+
+      <!-- 2. VÍDEO 1: ABRIL CON LOLA  -->
+      <div class="draggable-poster poster-md" style="top: 150px; left: 400px;">
+        <video class="sound-video" src="imagenes/abril con lola.mp4" autoplay loop muted playsinline></video>
+      </div>
+
+      <!-- 3. ALIVE  -->
+      <div class="draggable-poster poster-lg" style="top: 500px; left: 450px;">
+        <img src="imagenes/alive.avif" alt="Alive">
+      </div>
+
+      <!-- 4. DJ POOLBOI  -->
+      <div class="draggable-poster poster-xl" style="top: 560px; left: 0px;">
+        <img src="imagenes/mucho más.avif" alt="Mucho más">
+      </div>
+
+      <!-- 5. MUCHO MÁS  -->
+      <div class="draggable-poster poster-md" style="top: 1045px; left: 220px;">
+        <img src="imagenes/dj poolboi.avif" alt="Dj Poolboi">
+      </div>
+
+      <!-- 6. VÍDEO 2: ABUELA -->
+      <div class="draggable-poster poster-lg" style="top: 1000px; left: 520px;">
+        <video class="sound-video" src="imagenes/video abuela.mp4" autoplay loop muted playsinline></video>
+      </div>
+
+      <!-- 7. VÍDEO 3: TIEMPO -->
+      <div class="draggable-poster poster-lg" style="top: 1400px; left: 120px;">
+        <video class="sound-video" src="imagenes/tiempo.mp4" autoplay loop muted playsinline></video>
+      </div>
+
+      <!-- 8. Salvar los días  -->
+      <div class="draggable-poster poster-xl" style="top: 1590px; left: 470px;">
+        <img src="imagenes/salvar los días.avif" alt="Salvar los días">
+      </div>
+
+    </div>
+  </div>
+
+  <!-- VISTA INFO -->
+  <div id="view-info" class="view-content hidden">
+    <div class="info-body">
+
+      <p>ISABEL ENTIENDE EL DISEÑO COMO UN EQUILIBRIO ENTRE CONCEPTO, FUNCIONALIDAD Y SENSIBILIDAD VISUAL. CON INTERÉS EN LA CREACIÓN DE IDENTIDADES VISUALES, PUBLICACIONES Y EXPERIENCIAS DIGITALES DONDE CADA DECISIÓN RESPONDA A UNA INTENCIÓN Y NO SÓLO A UNA CUESTIÓN ESTÉTICA.</p>
+      <p>DISFRUTA INVESTIGANDO, DESARROLLANDO CONCEPTOS Y CONSTRUYENDO SISTEMAS VISUALES COHERENTES, SIEMPRE CON ESPECIAL ATENCIÓN AL DETALLE Y A LA NARRATIVA QUE HAY DETRÁS DE CADA PROYECTO.</p>
+     
+      <div class="contact-info">
+        <p>CONTACTO:</p>
+        <p><a href="mailto:aznaisabel@gmail.com">AZNAISABEL@GMAIL.COM</a></p>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
