@@ -92,7 +92,7 @@ document.addEventListener("DOMContentLoaded", () => {
       "imagenes/esmorzar fest-02.avif",
       "imagenes/esmorzar fest-03.avif"
     ],
-    
+
     "gallery-proj-7": [
       "imagenes/hibia-01.avif",
       "imagenes/hibia.webp",
